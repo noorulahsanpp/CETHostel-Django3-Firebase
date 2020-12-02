@@ -1,0 +1,22 @@
+{% extends 'hostel/nav.html' %}
+{% block content %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            {{ success}}
+</div>
+    {% endif %}
+<form action="{% url 'sendNotification' %}" method="POST">
+    {% csrf_token %}
+    Title<br>
+    <input type="text" name="topic"><br><br>
+    Description<br>
+    <textarea name="description"></textarea><br><br>
+    <button type="submit" class="btn btn-success">PUSH</button>
+</form>
+{% endblock %}

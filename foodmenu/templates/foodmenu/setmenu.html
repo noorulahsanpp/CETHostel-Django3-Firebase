@@ -1,0 +1,28 @@
+{% extends 'hostel/nav.html' %}
+{% block content %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            {{ success}}
+</div>
+    {% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    Date
+    <input type="date" name="date" value="01-12-25"><br>
+    Breakfast
+<input type="text" name="breakfast"><br>
+    Lunch
+<input type="text" name="lunch"><br>
+    Evening
+<input type="text" name="evening"><br>
+    Dinner
+<input type="text" name="dinner"><br>
+    <button type="submit" class="btn btn-success">Go</button>
+</form>
+{% endblock %}

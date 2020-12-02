@@ -1,0 +1,26 @@
+<html>
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'hostel/css/student_login.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center">STUDENT</p>
+    <form class="form1" action="{% url 'loginMessSec' %}" method="POST">
+        {% csrf_token %}
+      <input class="un " type="text" align="center" placeholder="Username" name="username">
+      <input class="pass" type="password" align="center" placeholder="Password" name="password">
+      <button type="submit" class="submit" align="center">Sign in</button>
+
+    </form>
+                
+    </div>
+     
+</body>
+
+</html>

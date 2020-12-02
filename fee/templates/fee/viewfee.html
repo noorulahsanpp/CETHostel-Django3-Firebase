@@ -1,0 +1,23 @@
+{% extends 'hostel/nav.html' %}
+{% block content %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Non-Veg</th>
+      <th scope="col">Veg</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for doc in result %}
+    <tr>
+      <td>{{ doc.date }}</td>
+      <td>{{ doc.nonveg }}</td>
+      <td>{{ doc.veg }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

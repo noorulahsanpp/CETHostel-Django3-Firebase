@@ -1,0 +1,27 @@
+{% extends 'hostel/nav.html' %}
+{% block content %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Morning</th>
+      <th scope="col">Lunch</th>
+        <th scope="col">Evening</th>
+      <th scope="col">Dinner</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for doc in result %}
+    <tr>
+      <td>{{ doc.date }}</td>
+      <td>{{ doc.breakfast }}</td>
+      <td>{{ doc.lunch }}</td>
+    <td>{{ doc.eve }}</td>
+    <td>{{ doc.dinner }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

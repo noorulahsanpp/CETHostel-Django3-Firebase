@@ -1,0 +1,52 @@
+{% extends 'hostel/nav.html' %}
+{% block content %}
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            {{ success}}
+</div>
+    {% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    Hostel <select name="hostel" required>
+<option value="">Select</option>
+<option value="MH">MH</option>
+<option value="LH">LH</option>
+</select><br>
+    Department <select name="dept" required>
+<option value="">Select</option>
+<option value="MCA">MCA</option>
+<option value="CS">CS</option>
+    <option value="EC">EC</option>
+<option value="CIVIL">CIVIL</option>
+    <option value="EEE">EEE</option>
+<option value="ME">ME</option>
+</select><br>
+    Block <select name="block" required>
+<option value="">Select</option>
+<option value="A">A Block</option>
+<option value="B">B Block</option>
+    <option value="C">C Block</option>
+<option value="D">D Block</option>
+</select><br>
+    Semester <select name="sem" required>
+<option value="">Select</option>
+<option value="1">1</option>
+<option value="2">2</option>
+    <option value="3">3</option>
+<option value="4">4</option>
+    <option value="5">5</option>
+<option value="6">6</option>
+</select><br>
+    Name <input type="text" name="name" required><br>
+    adnumber<input type="text" name="adnumber"><br>
+    room<input type="text" name="room"><br>
+
+    <button type="submit">Enter</button>
+</form>
+
+{% endblock %}

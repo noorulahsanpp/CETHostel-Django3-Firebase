@@ -1,0 +1,24 @@
+
+{% extends 'hostel/nav.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Total Absetees : {{ total }}</h2><br>
+<h1>Absentees</h1>
+
+{% for i in absents %}
+    {% for x in i %}
+        {{ x }}
+        {% endfor %}
+{% endfor %}
+</body>
+</html>
+
+{% endblock %}

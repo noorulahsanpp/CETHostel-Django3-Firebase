@@ -46,7 +46,6 @@ def validateMenu(date):
         return True
 
 
-
 def todaydate():
     today = datetime.datetime.now(pytz.timezone('UTC')).replace(hour=0, minute=0,second=0, microsecond=0).timestamp()
     return today

@@ -16,5 +16,5 @@ urlpatterns = [
     path('signupMessSec/', views.signupMessSec, name='signupMessSec'),
     path('loginMessSec/', views.loginMessSec, name='loginMessSec'),
     path('sendNotification/', views.sendNotification, name='sendNotification'),
-
+    path('absentees/', views.absentees, name='viewabsentees'),
 ]

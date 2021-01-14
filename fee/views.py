@@ -59,7 +59,8 @@ def validateFee(month):
         print(f'{doc.id} => {doc.to_dict()}')
         return True
 
-
-
+def paidfee(request):
+    if request.method == 'GET':
+        return render(request, 'fee/paidfee.html')
 
 

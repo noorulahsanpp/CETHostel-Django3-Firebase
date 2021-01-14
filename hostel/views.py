@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import IntegrityError
 from django.contrib import auth
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Create your views here.
 from django.template.defaultfilters import upper
@@ -108,6 +108,26 @@ def logoutAdmin(request):
     if request.method == 'POST':
         logout(request)
         return redirect('index')
+
+def absentees(request):
+    if request.method == 'GET':
+        import datetime
+        dt = datetime.datetime.now()
+        startdt = dt + timedelta(-1)
+        newdt = dt + timedelta(0)
+        dt = dt.replace(hour=12, minute=0, second=0, microsecond=0)
+        docs = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'attendance').where(u'date', u'>=',startdt).where(u'date', u'<=', newdt).stream()
+        result = []
+        absents = []
+        total= 0;
+        for doc in docs:
+            result.append(doc.to_dict())
+            # print(f'{doc.id} => {doc.to_dict()}')
+            absents.append(doc.get('absents'))
+            print(doc.get('absents'))
+            print(doc.get('total_absentees'))
+            total = doc.get('total_absentees')
+        return render(request, 'hostel/absentees.html', {'total': total, 'absents':absents})
 
 def studentregistration(request):
     if request.method == 'GET':
@@ -217,6 +237,5 @@ def cloudMessaging(topic, message):
     print(response.status_code)
 
     print(response.json())
-
 
 

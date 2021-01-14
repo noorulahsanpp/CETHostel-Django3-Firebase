@@ -24,7 +24,7 @@ def adminLogin(request):
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            return redirect('adminHome')
         else:
             return render(request, 'hostel/admin_login.html', {'error': 'Username or Password does not match'})
     else:

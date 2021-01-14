@@ -52,12 +52,7 @@
               Home <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'feehome' %}">
-              <span data-feather="file"></span>
-              Fee
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'viewsick' %}">
               <span data-feather="shopping-cart"></span>
@@ -76,18 +71,8 @@
               View Food menu
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'studentregistration' %}">
-              <span data-feather="layers"></span>
-              Registration
-            </a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'viewallstudents' %}">
-              <span data-feather="layers"></span>
-              View all students
-            </a>
-          </li>
+
+
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -109,12 +94,7 @@
               Send Notification
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'signupMessSec' %}">
-              <span data-feather="file-text"></span>
-              MessSec Registration
-            </a>
-          </li>
+
           <li class="nav-item">
               <form action="{% url 'logoutAdmin' %}" method="POST">
                 {% csrf_token %}

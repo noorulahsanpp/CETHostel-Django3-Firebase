@@ -17,4 +17,13 @@ urlpatterns = [
     path('loginMessSec/', views.loginMessSec, name='loginMessSec'),
     path('sendNotification/', views.sendNotification, name='sendNotification'),
     path('absentees/', views.absentees, name='viewabsentees'),
+    path('test/', views.test, name='test'),
+    path('calendar/', views.calendar, name='calendar'),
+    path('contacts/', views.contacts, name='contacts'),
+    path('contactus/', views.contactus, name='contactus'),
+    path('invoice/', views.invoice, name='invoice'),
+    path('invoiceprint/', views.invoiceprint, name='invoiceprint'),
+path('mailcompose/', views.mailcompose, name='mailcompose'),
+path('mailbox/', views.mailbox, name='mailbox'),
+path('mailread/', views.mailread, name='mailread'),
 ]

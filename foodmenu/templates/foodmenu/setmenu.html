@@ -1,28 +1,124 @@
-{% extends 'hostel/userNav.html' %}
+{% extends 'hostel/testhome.html' %}
+{% load static %}
 {% block content %}
 
-    {% if error %}
-    <div class="alert alert-danger" role="alert">
+      <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Advanced form elements</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/fontawesome-free/css/all.min.css'%}" >
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/daterangepicker/daterangepicker.css'%}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/icheck-bootstrap/icheck-bootstrap.min.css'%}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css'%}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'%}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/select2/css/select2.min.css'%}">
+    <link rel="stylesheet" href="{% static 'hostel/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css'%}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css'%}">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/bs-stepper/css/bs-stepper.min.css'%}">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="{% static 'hostel/plugins/dropzone/min/dropzone.min.css'%}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'hostel/dist/css/adminlte.min.css'%}">
+  </head>
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="card card-default">
+          <div class="card-header">
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" name="date" value="01-12-25">
+                </div>
+                  <div class="form-group">
+                  <label>Breakfast</label>
+                  <select name="breakfast" class="form-control select2" style="width: 100%;">
+                    <option selected="selected" value="Putt and Curry">Putt and Curry</option>
+                    <option value="Upmaav">Upmaav</option>
+                    <option value="Dosa">Dosa</option>
+                    <option value="Noodles">Noodles</option>
+                    <option value="Bread">Bread</option>
+                    <option value="Idli">Idli</option>
+                    <option value="Puri Masala">Puri Masala</option>
+                  </select>
+                </div>
+                  <div class="form-group">
+                  <label>Lunch</label>
+                  <select name="lunch" class="form-control select2" style="width: 100%;">
+                    <option selected="selected" value="Rice and Chicken">Rice and Chicken</option>
+                    <option value="Rice and Fish">Rice and Fish</option>
+                    <option value="Rice and Vegetable">Rice and Vegetable</option>
+                    <option value="Chicken Biriyani">Chicken Biriyani</option>
+                    <option value="Ghee Rice and Chicken">Ghee Rice and Chicken</option>
+                    <option value="Beef Biriyani">Beef Biriyani</option>
+                    <option value="Fish Biriyani">Fish Biriyani</option>
+                  </select>
+                </div>
+                  <div class="form-group">
+                  <label>Evening</label>
+                  <select name="evening" class="form-control select2" style="width: 100%;">
+                    <option selected="selected" value="Samosa and Coffee">Samosa and Coffee</option>
+                    <option value="Chicken Roll">Chicken Roll</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Egg Puffs">Egg Puffs</option>
+                    <option value="Chicken Puffs">Chicken Puffs</option>
+                    <option value="Bread and Jam">Bread and Jam</option>
+                    <option value="Biscuit">Biscuit</option>
+                  </select>
+                </div>
+                  <div class="form-group">
+                  <label>Dinner</label>
+                  <select name="dinner" class="form-control select2" style="width: 100%;">
+                    <option selected="selected" value="Ghee Rice">Ghee Rice</option>
+                    <option value="Porotta and Beef">Porotta and Beef</option>
+                    <option value="Ghee Rice">Ghee Rice</option>
+                    <option value="Biriyani Dum">Biriyani Dum</option>
+                    <option value="Tomato Rice">Tomato Rice</option>
+                    <option value="Rice Soup">Rice Soup</option>
+                    <option value="Rice and Fish">Rice and Fish</option>
+                  </select>
+                </div>
+                  <div class="form-group">
+                 <button type="submit" class="btn btn-block btn-success btn-lg">Push</button>
+                </div>
+                  <div>
+                      {% if error %}
+    <div class="btn btn-block btn-outline-danger btn-flat" role="alert">
         {{ error }}
     </div>
     {% endif %}
     {% if success %}
-        <div class="alert alert-success" role="alert">
+        <div class="btn btn-block btn-outline-success btn-flat" role="alert">
             {{ success}}
 </div>
     {% endif %}
-<form action="" method="POST">
-    {% csrf_token %}
-    Date
-    <input type="date" name="date" value="01-12-25"><br>
-    Breakfast
-<input type="text" name="breakfast"><br>
-    Lunch
-<input type="text" name="lunch"><br>
-    Evening
-<input type="text" name="evening"><br>
-    Dinner
-<input type="text" name="dinner"><br>
-    <button type="submit" class="btn btn-success">Go</button>
+                  </div>
+                <!-- /.form-group -->
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- /.row -->
+          </div>
+          <!-- /.card-body -->
+        </div>
 </form>
 {% endblock %}

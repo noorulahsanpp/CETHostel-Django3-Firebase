@@ -4,6 +4,6 @@ from foodmenu import views
 
 urlpatterns = [
     path('setmenu/', views.setmenu, name='setmenu'),
-    path('viewfoodmenu/<int:no>', views.viewmenu, name='viewmenu'),
+    path('viewfoodmenu/', views.viewmenu, name='viewmenu'),
 
 ]

@@ -2,33 +2,58 @@
 <html>
 {% load static %}
 <head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<link rel="stylesheet" href="{% static 'hostel/css/adminSignup.css' %}">
-</head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="{% static 'hostel/css/messsecsignup.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+</head>
 <body> 
 
-<div class="container">
-    <center>  <h1> Student Registeration</h1> </center>
-  <form method="POST" action="{% url 'signupMessSec' %}">
-{% csrf_token %}
-  <hr>  
-  <label> <b>User Name </b></label>
-<input type="text" name="username" placeholder= "User name" size="15" required />
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password1" required>
-    <select name="hostel">
+<div class="main-w3layouts wrapper">
+		<h1>MessSec <Registration></Registration> Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="{% url 'signupMessSec' %}" method="post">
+                    {% csrf_token %}
+					<input class="text" type="text" name="username" placeholder="Username" required=""><br>
+					<input class="text" type="password" name="password1" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="password2" placeholder="Confirm Password" required="">
+                    <select name="hostel">
         <option value="LH">LH</option>
                 <option value="MH">MH</option>
     </select>
-    <label for="psw-repeat"><b>Re-type Password</b></label>  
-    <input type="password" placeholder="Retype Password" name="password2" required>
-    <button type="submit" class="registerbtn">Register</button>
-      {% if error %}
-{{ error }}
+					<div class="wthree-text">
+						<label class="anim">
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP">
+				</form>
+                {% if error %}
+<p>{{ error }}</p>
 {% endif %}
-</form>
-</div>
-
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2021 <a href="{% url 'home' %}" target="_blank">CET Hostel</a></p>
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
 </body>  
 </html>

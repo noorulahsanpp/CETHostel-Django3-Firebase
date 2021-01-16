@@ -50,7 +50,7 @@ def todaydate():
     today = datetime.datetime.now(pytz.timezone('UTC')).replace(hour=0, minute=0,second=0, microsecond=0).timestamp()
     return today
 
-def viewmenu(request, no):
+def viewmenu(request):
     if request.method == 'GET':
         db = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'foodmenu')
         docs = db.stream()

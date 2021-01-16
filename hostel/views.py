@@ -30,8 +30,74 @@ def adminLogin(request):
     else:
         return render(request, 'hostel/admin_login.html')
 
+def test(request):
+    import datetime
+    dt = datetime.datetime.now()
+    startdt = dt + timedelta(-1)
+    newdt = dt + timedelta(0)
+    dt = dt.replace(hour=12, minute=0, second=0, microsecond=0)
+    docs = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'attendance').where(u'date', u'>=',
+                                                                                                     startdt).where(
+        u'date', u'<=', newdt).stream()
+    result = []
+    absents = []
+    total = 0;
+    for doc in docs:
+        result.append(doc.to_dict())
+        # print(f'{doc.id} => {doc.to_dict()}')
+        absents.append(doc.get('absents'))
+        print(doc.get('absents'))
+        print(doc.get('total_absentees'))
+        total = doc.get('total_absentees')
+    return render(request, 'hostel/testhome.html', {'total': total})
+def contacts(request):
+    return render(request, 'hostel/contacts.html')
+
+def invoice(request):
+    import datetime
+    date = datetime.date.today()
+    return render(request, 'hostel/invoice.html', {'date': date})
+
+def mailcompose(request):
+    return render(request, 'mailbox/compose.html')
+
+def mailread(request):
+    return render(request, 'mailbox/read-mail.html')
+
+def mailbox(request):
+    return render(request, 'mailbox/mailbox.html')
+
+def invoiceprint(request):
+    import datetime
+    date = datetime.date.today()
+    return render(request, 'hostel/invoice-print.html', {'date': date})
+
+def contactus(request):
+    return render(request, 'hostel/contact-us.html')
+
+def calendar(request):
+    return render(request, 'hostel/calendar.html')
+
 def adminHome(request):
-    return render(request, 'hostel/adminHome.html')
+    import datetime
+    dt = datetime.datetime.now()
+    startdt = dt + timedelta(-1)
+    newdt = dt + timedelta(0)
+    dt = dt.replace(hour=12, minute=0, second=0, microsecond=0)
+    docs = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'attendance').where(u'date', u'>=',
+                                                                                                     startdt).where(
+        u'date', u'<=', newdt).stream()
+    result = []
+    absents = []
+    total = 0;
+    for doc in docs:
+        result.append(doc.to_dict())
+        # print(f'{doc.id} => {doc.to_dict()}')
+        absents.append(doc.get('absents'))
+        print(doc.get('absents'))
+        print(doc.get('total_absentees'))
+        total = doc.get('total_absentees')
+    return render(request, 'hostel/testhome.html', {'total': total})
 
 def MHHome(request):
     return render(request, 'hostel/MHhome.html')
@@ -40,7 +106,7 @@ def LHHome(request):
     return render(request, 'hostel/LHhome.html')
 
 def landingPage(request):
-    return render(request, 'hostel/index.html')
+    return render(request, 'hostel/login.html')
 
 def loginuser(request):
     if request.method == 'GET':

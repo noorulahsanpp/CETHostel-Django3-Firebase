@@ -4,9 +4,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 class FirebaseInit():
-    # cred = credentials.Certificate('/home/noorul/PycharmProjects/HostelApp/hostelapp-f9328-firebase-adminsdk-yfmwt-27619886a6.json')
-    cred = credentials.Certificate(
-        'C:/Users/Noorul/PycharmProjects/CETHostel-Django3-Firebase/hostelapp-f9328-firebase-adminsdk-yfmwt-27619886a6.json')
+    cred = credentials.Certificate('/home/noorul/PycharmProjects/HostelApp/hostelapp-f9328-firebase-adminsdk-yfmwt-27619886a6.json')
+    # cred = credentials.Certificate(
+    #     'C:/Users/Noorul/PycharmProjects/CETHostel-Django3-Firebase/hostelapp-f9328-firebase-adminsdk-yfmwt-27619886a6.json')
     app = firebase_admin.initialize_app(cred)
     store = firestore.client()
 

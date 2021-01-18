@@ -23,7 +23,9 @@ urlpatterns = [
     path('contactus/', views.contactus, name='contactus'),
     path('invoice/', views.invoice, name='invoice'),
     path('invoiceprint/', views.invoiceprint, name='invoiceprint'),
-path('mailcompose/', views.mailcompose, name='mailcompose'),
-path('mailbox/', views.mailbox, name='mailbox'),
-path('mailread/', views.mailread, name='mailread'),
+    path('mailcompose/', views.mailcompose, name='mailcompose'),
+    path('mailbox/', views.mailbox, name='mailbox'),
+    path('mailread/', views.mailread, name='mailread'),
+    path('viewnotification/', views.viewnotification, name='viewnotification'),
+    path('allinmates/', views.allinmates, name='allinmates'),
 ]

@@ -1,0 +1,77 @@
+{% extends 'hostel/testhome.html' %}
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+{% block content %}
+
+    <form action="" method="POST">
+     {% csrf_token %}
+    Department <select name="dept" id="dept">
+    <option value="">Select</option>
+    <option value="MCA">MCA</option>
+    <option value="CS">CS</option>
+        <option value="EC">EC</option>
+    <option value="CIVIL">CIVIL</option>
+        <option value="EEE">EEE</option>
+    <option value="ME">ME</option>
+    </select><br>
+        Block <select name="block" id="block">
+    <option value="">Select</option>
+    <option value="A">A Block</option>
+    <option value="B">B Block</option>
+        <option value="C">C Block</option>
+    <option value="D">D Block</option>
+    </select><br>
+        Semester <select name="sem" id="sem">
+    <option value="">Select</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+        <option value="3">3</option>
+    <option value="4">4</option>
+        <option value="5">5</option>
+    <option value="6">6</option>
+    </select><br>
+        Room <select name="room" id="sem">
+    <option value="">Select</option>
+    <option value="101">101</option>
+    <option value="103">103</option>
+        <option value="106">106</option>
+    <option value="111">111</option>
+        <option value="303">303</option>
+    <option value="323">323</option>
+    </select><br>
+    <button id="searchButton">Seacrh</button>
+    </form>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Admission Number</th>
+          <th scope="col">Name</th>
+          <th scope="col">Block</th>
+            <th scope="col">Room</th>
+          <th scope="col">Department</th>
+            <th scope="col">Semester</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for doc in result %}
+        <tr>
+          <td>{{ doc.admission_no }}</td>
+          <td>{{ doc.name }}</td>
+          <td>{{ doc.block }}</td>
+        <td>{{ doc.room }}</td>
+        <td>{{ doc.department }}</td>
+        <td>{{ doc.semester }}</td>
+        <td>{{ doc.email }}</td>
+        <td>{{ doc.phone }}</td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+
+    {% load static %}
+    <script type="text/javascript" src="{% static 'hostel/js/index.js' %}"></script>
+
+
+{% endblock %}

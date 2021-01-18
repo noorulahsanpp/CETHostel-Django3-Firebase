@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 
 # Create your views here.
 from django.template.defaultfilters import upper
+from firebase_admin import messaging
 
 from HostelApp.firebase_init import FirebaseInit
 from hostel.models import MessSec
@@ -259,20 +260,71 @@ def checkStudent(adnumber):
     if doc.exists:
         return True
 
-def viewallstudents(request):
-    db = FirebaseInit.store.collection(u'inmates').document(u'MH').collection(u'users')
+def allinmates(request):
+    db = FirebaseInit.store.collection(u'registered').where(u'hostel', u'==', 'LH')
     result = []
+    docs = db.stream()
     if request.method == 'GET':
-        docs = db.stream()
+
+        for doc in docs:
+            result.append(doc.to_dict())
+        return render(request, 'hostel/allinmates.html', {'result': result})
+    else:
+
+        semester = request.POST['sem']
+        block = request.POST['block']
+        department = request.POST['dept']
+        room = request.POST['room']
+        if semester != "" and block != "" and department != "":
+            docs = db.where(u'semester', u'==', semester).where(u'block', u'==', block).where(u'department', u'==',
+                                                                                              department).stream()
+        elif semester != "" and block != "" and department == "":
+            docs = db.where(u'semester', u'==', semester).where(u'block', u'==', block).stream()
+        elif semester != "" and block == "" and department != "":
+            docs = db.where(u'semester', u'==', semester).where(u'department', u'==', department).stream()
+        elif block != "":
+            docs = db.where(u'block', u'==', block).stream()
+        elif department != "":
+            docs = db.where(u'department', u'==', department).stream()
+        elif semester != "":
+            docs = db.where(u'semester', u'==', semester).stream()
+        elif room != "":
+            docs = db.where(u'room', u'==', room).stream()
+
+        for doc in docs:
+            result.append(doc.to_dict())
+
+        return render(request, 'hostel/allinmates.html', {'result': result})
+
+def viewallstudents(request):
+    db = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'users')
+    result = []
+    docs = db.stream()
+    if request.method == 'GET':
+
         for doc in docs:
             result.append(doc.to_dict())
         return render(request, 'hostel/viewallstudents.html', {'result': result})
     else:
-        semester = request.GET.get('sem', None)
-        block = request.GET.get('block', None)
-        department = request.GET.get('dept', None)
-        if semester != "" and block != "" and department == "":
+
+        semester = request.POST['sem']
+        block = request.POST['block']
+        department = request.POST['dept']
+        room = request.POST['room']
+        if semester != "" and block != "" and department != "":
             docs = db.where(u'semester', u'==', semester).where(u'block', u'==', block).where(u'department', u'==', department).stream()
+        elif semester != "" and block != "" and department == "":
+            docs = db.where(u'semester', u'==', semester).where(u'block', u'==', block).stream()
+        elif semester != "" and block == "" and department != "":
+            docs = db.where(u'semester', u'==', semester).where(u'department', u'==', department).stream()
+        elif block != "":
+            docs = db.where(u'block', u'==', block).stream()
+        elif department != "":
+            docs = db.where(u'department', u'==', department).stream()
+        elif semester != "":
+            docs = db.where(u'semester', u'==', semester).stream()
+        elif room != "":
+            docs = db.where(u'room', u'==', room).stream()
 
         for doc in docs:
             result.append(doc.to_dict())
@@ -304,4 +356,28 @@ def cloudMessaging(topic, message):
 
     print(response.json())
 
+def viewnotification(request):
+    result = []
+    db = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'notification')
+    docs = db.stream()
+    for doc in docs:
+        result.append(doc.to_dict())
+    if request.method == 'GET':
+        return render(request, 'table/data.html', {'result': result})
 
+def pushnot():
+    topic = 'LH'
+
+    # See documentation on defining a message payload.
+    message = messaging.Message(
+        data={
+            'score': '850',
+            'time': '2:45',
+        },
+        topic=topic,
+    )
+
+    # Send a message to the devices subscribed to the provided topic.
+    response = messaging.send(message)
+    # Response is a message ID string.
+    print('Successfully sent message:', response)

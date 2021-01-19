@@ -5,7 +5,7 @@
 
     <form action="" method="POST">
      {% csrf_token %}
-    Department <select name="dept" id="dept">
+    &emsp;&ensp;&emsp;&ensp;Department &emsp;&ensp;<select name="dept" id="dept">
     <option value="">Select</option>
     <option value="MCA">MCA</option>
     <option value="CS">CS</option>
@@ -13,15 +13,8 @@
     <option value="CIVIL">CIVIL</option>
         <option value="EEE">EEE</option>
     <option value="ME">ME</option>
-    </select><br>
-        Block <select name="block" id="block">
-    <option value="">Select</option>
-    <option value="A">A Block</option>
-    <option value="B">B Block</option>
-        <option value="C">C Block</option>
-    <option value="D">D Block</option>
-    </select><br>
-        Semester <select name="sem" id="sem">
+    </select>
+        &emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;Semester&emsp;&ensp;&emsp;&ensp; <select name="sem" id="sem">
     <option value="">Select</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -29,8 +22,16 @@
     <option value="4">4</option>
         <option value="5">5</option>
     <option value="6">6</option>
-    </select><br>
-        Room <select name="room" id="sem">
+    </select><br><br>
+        &emsp;&ensp;&emsp;&ensp;Block &emsp;&ensp;&emsp;&ensp;&emsp;<select name="block" id="block">
+    <option value="">Select</option>
+    <option value="A">A Block</option>
+    <option value="B">B Block</option>
+        <option value="C">C Block</option>
+    <option value="D">D Block</option>
+    </select>
+
+       &emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp; Room &emsp;&ensp;&emsp;&ensp;&emsp;<select name="room" id="sem">
     <option value="">Select</option>
     <option value="101">101</option>
     <option value="103">103</option>
@@ -38,8 +39,8 @@
     <option value="111">111</option>
         <option value="303">303</option>
     <option value="323">323</option>
-    </select><br>
-    <button id="searchButton">Seacrh</button>
+    </select>
+    &emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp; <button id="searchButton">Search</button><br><br>
     </form>
     <table class="table">
       <thead class="thead-dark">

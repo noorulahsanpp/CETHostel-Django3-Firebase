@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>HostelApp | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -271,6 +271,14 @@
             </a>
           </li>
             <li class="nav-item">
+            <a href="{% url 'viewcomplaints' %}" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Complaints
+              </p>
+            </a>
+          </li>
+            <li class="nav-item">
             <a href="{% url 'invoice' %}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
@@ -295,15 +303,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+
+<li class="nav-item">
             <a href="pages/kanban.html" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
               <p>
-                FAQ
+                <form action="{% url 'logoutAdmin' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-block btn-outline-secondary">Logout</button>
+              </form>
               </p>
             </a>
           </li>
-
 
         </ul>
       </nav>

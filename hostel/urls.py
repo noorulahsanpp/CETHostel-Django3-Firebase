@@ -28,4 +28,6 @@ urlpatterns = [
     path('mailread/', views.mailread, name='mailread'),
     path('viewnotification/', views.viewnotification, name='viewnotification'),
     path('allinmates/', views.allinmates, name='allinmates'),
+    path('viewcomplaints/', views.viewcomplaints, name='viewcomplaints'),
+    path('<str:adno>', views.studentdetails, name='studentdetails'),
 ]

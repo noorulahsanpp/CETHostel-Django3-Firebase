@@ -1,5 +1,19 @@
-{% extends 'hostel/adminNav.html' %}
+{% extends 'hostel/testhome.html' %}
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in</title>
 
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'hostel/plugins/fontawesome-free/css/all.min.css'%}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'hostel/plugins/icheck-bootstrap/icheck-bootstrap.min.css'%}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'hostel/dist/css/adminlte.min.css'%}">
+</head>
 {% block content %}
 
     {% if error %}
@@ -14,11 +28,23 @@
     {% endif %}
 <form action="" method="POST">
     {% csrf_token %}
-    Veg
-<input type="number" name="veg"><br>
-    Non-Veg
-<input type="number" name="nonveg"><br>
-    Month <input type="month" name="month">
-    <button type="submit" class="btn btn-success">Go</button>
+    Common Fee&emsp;&ensp;
+<input type="number" name="common"><br><br>
+    Rent&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;
+<input type="number" name="rent"><br><br>
+    Veg&emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&emsp;
+<input type="number" name="veg"><br><br>
+    Non-Veg&emsp;&ensp;&ensp;&ensp;&emsp;
+<input type="number" name="nonveg"><br><br>
+    Month &emsp;&ensp;&ensp;&ensp;&emsp;&emsp;<input type="month" name="month"><br><br>
+    Due date &emsp;&ensp;&ensp;&ensp;&emsp;<input type="date" name="duedate"><br><br>
+    &emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;<button type="submit" class="btn btn-success">Add Fee</button>
 </form>
 {% endblock %}
+
+<!-- jQuery -->
+<script src="{% static 'hostel/plugins/jquery/jquery.min.js'%}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'hostel/plugins/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'hostel/dist/js/adminlte.min.js'%}"></script>

@@ -41,8 +41,7 @@ def viewsick(request):
         for doc in docs:
             result.append(doc.to_dict())
             print(f'{doc.id} => {doc.to_dict()}')
-            breakfast.append(doc.get('breakfastname'))
-            print(doc.get('breakfastname'))
+
             # result.append(doc.get('a'))
             # q = doc.to_dict()
 

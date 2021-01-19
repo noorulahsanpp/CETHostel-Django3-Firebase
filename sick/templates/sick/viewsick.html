@@ -6,9 +6,6 @@
 <thead class="thead-dark">
 <tr>
       <th scope="col">Admission Number</th>
-        <th scope="col">Name</th>
-        <th scope="col">Block</th>
-        <th scope="col">Room</th>
     </tr>
 </thead>
 
@@ -17,7 +14,7 @@
 {% for i in result %}
 
 {% for x in i.breakfastadmno %}
-    <tr><td>{{ x }}</td></tr>
+    <tr><td><a href="{% url 'studentdetails' x %}">{{ x }}</a></td></tr>
     {% endfor %}
 {% endfor %}
 </tr>
@@ -26,7 +23,7 @@
 {% for i in result %}
 
 {% for x in i.lunchadmno %}
-    <tr><td>{{ x }}</td></tr>
+    <tr><td><a href="{% url 'studentdetails' x %}">{{ x }}</a></td></tr>
     {% endfor %}
 {% endfor %}
 </tr>
@@ -35,7 +32,7 @@
 {% for i in result %}
 
 {% for x in i.eveningadmno %}
-    <tr><td>{{ x }}</td></tr>
+    <tr><td><a href="{% url 'studentdetails' x %}">{{ x }}</a></td></tr>
     {% endfor %}
 {% endfor %}
 </tr>
@@ -44,7 +41,7 @@
 {% for i in result %}
 
 {% for x in i.dinneradmno %}
-    <tr><td>{{ x }}</td></tr>
+    <tr><td><a href="{% url 'studentdetails' x %}">{{ x }}</a></td></tr>
     {% endfor %}
 {% endfor %}
 </tr>

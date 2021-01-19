@@ -8,15 +8,32 @@
     <title>Title</title>
 </head>
 <body>
-
 <h2>Total Absetees : {{ total }}</h2><br>
-<h1>Absentees</h1>
+<h3>Absentees</h3>
 
+<table class="table">
+<thead class="thead-dark">
+<tr>
+      <th scope="col">Admission Number</th>
+    </tr>
+</thead>
+
+<tr><td>
 {% for i in absents %}
     {% for x in i %}
-        {{ x }}
+        <a href="{% url 'studentdetails' x %}">{{ x }}</a>
         {% endfor %}
 {% endfor %}
+
+</td>
+</tr>
+
+
+
+
+</tr>
+
+</table>
 </body>
 </html>
 

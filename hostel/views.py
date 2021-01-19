@@ -79,6 +79,17 @@ def contactus(request):
 def calendar(request):
     return render(request, 'hostel/calendar.html')
 
+def studentdetails(request, adno):
+    db = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'users').where(u'admission_no', u'==', adno)
+    result = []
+    docs = db.stream()
+    if request.method == 'GET':
+
+        for doc in docs:
+            result.append(doc.to_dict())
+            print(doc.to_dict())
+        return render(request, 'hostel/studentdetails.html', {'result': result})
+
 def adminHome(request):
     import datetime
     dt = datetime.datetime.now()
@@ -108,6 +119,15 @@ def LHHome(request):
 
 def landingPage(request):
     return render(request, 'hostel/login.html')
+
+def viewcomplaints(request):
+    result = []
+    db = FirebaseInit.store.collection(u'inmates').document(u'LH').collection(u'complaints')
+    docs = db.stream()
+    for doc in docs:
+        result.append(doc.to_dict())
+    if request.method == 'GET':
+        return render(request, 'hostel/viewcomplaints.html', {'result': result})
 
 def loginuser(request):
     if request.method == 'GET':
@@ -151,6 +171,7 @@ def adminSignup(request):
         else:
             return render(request, 'hostel/adminSignup.html', {'error': 'Password does not match'})
 
+
 def signupMessSec(request):
     if request.method == 'GET':
         return render(request, 'hostel/signupMessSec.html')
@@ -174,7 +195,7 @@ def logoutAdmin(request):
     # POST is used here because browsers load all the anchor tags in the website background to load pages faster
     if request.method == 'POST':
         logout(request)
-        return redirect('index')
+        return render(request, 'hostel/login.html')
 
 def absentees(request):
     if request.method == 'GET':
@@ -259,6 +280,7 @@ def checkStudent(adnumber):
     doc = db.get()
     if doc.exists:
         return True
+
 
 def allinmates(request):
     db = FirebaseInit.store.collection(u'registered').where(u'hostel', u'==', 'LH')

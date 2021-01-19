@@ -23,7 +23,10 @@ def postfee(request):
         veg = request.POST['veg']
         nonveg = request.POST['nonveg']
         month = request.POST['month']
-        if veg == "" or nonveg == "" or month == "":
+        due = request.POST['duedate']
+        common = request.POST['common']
+        rent = request.POST['rent']
+        if veg == "" or nonveg == "" or month == "" or due == "" or common == "" or rent == "":
             return render(request, 'fee/postfee.html', {'error': 'Field cannot be empty'})
         else:
             if validateFee(month):
@@ -33,7 +36,10 @@ def postfee(request):
                 data = {
                     u'veg': veg,
                     u'nonveg': nonveg,
-                    u'date': month
+                    u'date': month,
+                    u'duedate': due,
+                    u'common': common,
+                    u'rent': rent
                 }
                 db.set(data)
                 cloudMessaging('Fee updated')
